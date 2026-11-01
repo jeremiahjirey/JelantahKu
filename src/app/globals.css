@@ -1,0 +1,566 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════
+   JelantahKu — Design System
+   Tailwind v4 CSS-based configuration
+   ═══════════════════════════════════════════════════════════ */
+
+@theme inline {
+  /* ── Warna brand (§2 DESIGN.md) ────────────────────────── */
+  --color-deep-green:    #283F1C;
+  --color-deep-green-90: #3A5530;
+  --color-deep-green-10: #E9EEE6;
+  --color-sunflower:     #FAA61A;
+  --color-sunflower-hover: #E8940A;
+  --color-sunflower-15:  #FEF1D9;
+  --color-seafoam:       #68EDCC;
+  --color-seafoam-20:    #DCFAF2;
+  --color-cream:         #FFFCF5;
+
+  /* ── Tipografi ──────────────────────────────────────────── */
+  --font-heading: var(--font-outfit);
+  --font-body:    var(--font-plus-jakarta-sans);
+
+  /* ── Border radius ──────────────────────────────────────── */
+  --radius-card:   24px;
+  --radius-btn:    999px;
+  --radius-input:  14px;
+  --radius-img:    28px;
+  --radius-badge:  999px;
+
+  /* ── Bayangan ───────────────────────────────────────────── */
+  --shadow-card: 0 8px 30px rgba(40, 63, 28, 0.08);
+  --shadow-btn:  0 4px 16px rgba(40, 63, 28, 0.16);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Base styles
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --deep-green:    #283F1C;
+  --deep-green-90: #3A5530;
+  --deep-green-10: #E9EEE6;
+  --sunflower:     #FAA61A;
+  --sunflower-hover: #E8940A;
+  --sunflower-15:  #FEF1D9;
+  --seafoam:       #68EDCC;
+  --seafoam-20:    #DCFAF2;
+  --white:         #FFFFFF;
+  --cream:         #FFFCF5;
+  --error-color:   #B3261E;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background-color: var(--cream);
+  color: var(--deep-green);
+  font-family: var(--font-plus-jakarta-sans), system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Tipografi ────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  color: var(--deep-green);
+  line-height: 1.2;
+}
+
+/* ── Utility: container ───────────────────────────────────── */
+.container-site {
+  width: 100%;
+  max-width: 1160px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+@media (min-width: 768px) {
+  .container-site {
+    padding-inline: 32px;
+  }
+}
+
+/* ── Utility: section spacing ─────────────────────────────── */
+.section-spacing {
+  padding-block: 72px;
+}
+
+@media (min-width: 1024px) {
+  .section-spacing {
+    padding-block: 120px;
+  }
+}
+
+/* ── Tombol primer (Sunflower + Deep Green text) ──────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--sunflower);
+  color: var(--deep-green);
+  font-family: var(--font-plus-jakarta-sans), system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0 28px;
+  height: 52px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 200ms ease, transform 200ms ease,
+    box-shadow 200ms ease;
+  white-space: nowrap;
+  min-width: 48px;
+  min-height: 48px;
+}
+
+.btn-primary:hover {
+  background-color: var(--sunflower-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(40, 63, 28, 0.2);
+}
+
+.btn-primary:focus-visible {
+  outline: 3px solid var(--deep-green);
+  outline-offset: 2px;
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* ── Tombol sekunder (outline Deep Green) ─────────────────── */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: transparent;
+  color: var(--deep-green);
+  font-family: var(--font-plus-jakarta-sans), system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0 28px;
+  height: 52px;
+  border-radius: 999px;
+  border: 2px solid var(--deep-green);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 200ms ease, color 200ms ease, transform 200ms ease;
+  white-space: nowrap;
+  min-width: 48px;
+  min-height: 48px;
+}
+
+.btn-secondary:hover {
+  background-color: var(--deep-green);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.btn-secondary:focus-visible {
+  outline: 3px solid var(--seafoam);
+  outline-offset: 2px;
+}
+
+/* Versi di atas section gelap (outline putih) */
+.btn-secondary-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: transparent;
+  color: var(--white);
+  font-family: var(--font-plus-jakarta-sans), system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0 28px;
+  height: 52px;
+  border-radius: 999px;
+  border: 2px solid var(--white);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 200ms ease, color 200ms ease, transform 200ms ease;
+  white-space: nowrap;
+  min-width: 48px;
+  min-height: 48px;
+}
+
+.btn-secondary-light:hover {
+  background-color: var(--white);
+  color: var(--deep-green);
+  transform: translateY(-2px);
+}
+
+.btn-secondary-light:focus-visible {
+  outline: 3px solid var(--seafoam);
+  outline-offset: 2px;
+}
+
+/* ── Badge ────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--seafoam-20);
+  color: var(--deep-green);
+  font-family: var(--font-plus-jakarta-sans), system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+  line-height: 1.5;
+}
+
+/* ── Kartu ────────────────────────────────────────────────── */
+.card {
+  background-color: var(--white);
+  border-radius: 24px;
+  padding: 24px;
+  border: 1px solid var(--deep-green-10);
+  box-shadow: 0 8px 30px rgba(40, 63, 28, 0.08);
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: 32px;
+  }
+}
+
+.card-dark {
+  background-color: var(--deep-green-90);
+  border-radius: 24px;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (min-width: 768px) {
+  .card-dark {
+    padding: 32px;
+  }
+}
+
+/* ── Ikon dalam lingkaran ─────────────────────────────────── */
+.icon-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.icon-circle-seafoam {
+  background-color: var(--seafoam-20);
+  color: var(--deep-green);
+}
+
+.icon-circle-sunflower {
+  background-color: var(--sunflower-15);
+  color: var(--deep-green);
+}
+
+/* ── Form input ───────────────────────────────────────────── */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-family: var(--font-plus-jakarta-sans), system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--deep-green);
+}
+
+.form-label .required {
+  color: var(--error-color);
+  margin-left: 2px;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  height: 52px;
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 1.5px solid var(--deep-green-10);
+  background-color: var(--white);
+  color: var(--deep-green);
+  font-family: var(--font-plus-jakarta-sans), system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.form-textarea {
+  height: auto;
+  min-height: 96px;
+  padding: 12px 16px;
+  resize: vertical;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--deep-green);
+  box-shadow: 0 0 0 3px rgba(104, 237, 204, 0.4);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #9ca3af;
+}
+
+.form-error {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--error-color);
+}
+
+/* ── Wave divider ─────────────────────────────────────────── */
+.wave-divider {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  pointer-events: none;
+}
+
+.wave-divider svg {
+  display: block;
+  width: 100%;
+}
+
+/* ── Animasi fade-up ──────────────────────────────────────── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 500ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* ── Animasi tetes jatuh di hero ──────────────────────────── */
+@keyframes dropFall {
+  0% { transform: translateY(-8px) scale(0.9); opacity: 0; }
+  30% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { transform: translateY(8px) scale(1.05); opacity: 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(-2deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ── Scrollbar tipis ──────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--deep-green-10);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--deep-green);
+}
+
+/* ── Accordion ────────────────────────────────────────────── */
+details summary {
+  list-style: none;
+}
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* ── WhatsApp floating btn ────────────────────────────────── */
+.wa-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--deep-green);
+  color: var(--white);
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(40, 63, 28, 0.3);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.wa-float:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 28px rgba(40, 63, 28, 0.4);
+}
+
+.wa-float:focus-visible {
+  outline: 3px solid var(--seafoam);
+  outline-offset: 2px;
+}
+
+/* ── Select custom arrow ──────────────────────────────────── */
+.form-select-wrapper {
+  position: relative;
+}
+
+.form-select-wrapper::after {
+  content: '';
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 6px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23283F1C' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+}
+
+.form-select {
+  padding-right: 40px;
+}
+
+/* ── Garis bawah bergelombang (Seafoam) ───────────────────── */
+.underline-wave {
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--seafoam);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+}
+
+/* ── Tabel kecil ──────────────────────────────────────────── */
+.table-brand {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.table-brand th {
+  background-color: var(--deep-green);
+  color: var(--white);
+  font-family: var(--font-plus-jakarta-sans), system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.table-brand td {
+  padding: 12px 16px;
+  font-size: 15px;
+  border-bottom: 1px solid var(--deep-green-10);
+}
+
+.table-brand tr:last-child td {
+  border-bottom: none;
+}
+
+.table-brand tr:nth-child(even) td {
+  background-color: var(--cream);
+}
+
+/* ── Checkbox custom ──────────────────────────────────────── */
+.checkbox-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border-radius: 6px;
+  border: 1.5px solid var(--deep-green-10);
+  background-color: var(--white);
+  cursor: pointer;
+  transition: border-color 200ms, background-color 200ms;
+  margin-top: 2px;
+  position: relative;
+}
+
+.checkbox-wrapper input[type="checkbox"]:checked {
+  background-color: var(--deep-green);
+  border-color: var(--deep-green);
+}
+
+.checkbox-wrapper input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 6px;
+  height: 10px;
+  border-right: 2px solid var(--white);
+  border-bottom: 2px solid var(--white);
+  transform: rotate(45deg);
+}
+
+.checkbox-wrapper input[type="checkbox"]:focus-visible {
+  outline: 3px solid var(--seafoam);
+  outline-offset: 2px;
+}
+
+/* ── Progress counter ─────────────────────────────────────── */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
